@@ -2535,3 +2535,101 @@ input[type="range"]::-moz-range-thumb {
 
   .empfehlung-card { flex-direction: column; gap: .75rem; }
 }
+
+/* ============================================================
+   STICKY NAVIGATION (erscheint wenn Ergebnisse sichtbar)
+   ============================================================ */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--clr-surface);
+  border-bottom: 1px solid var(--clr-border);
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+  padding: .6rem 0;
+  margin-bottom: 1rem;
+}
+
+.sticky-nav-inner {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+.sticky-nav-btn {
+  padding: .5rem 1rem;
+  font-size: .88rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  background: var(--clr-accent-blue);
+  color: var(--clr-text-on-accent);
+  transition: filter var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+
+.sticky-nav-btn:hover   { filter: brightness(1.1); transform: translateY(-1px); }
+.sticky-nav-btn:active  { transform: translateY(0); }
+
+.sticky-nav-btn--ghost {
+  background: transparent;
+  border: 2px solid var(--clr-border);
+  color: var(--clr-text-muted);
+}
+
+.sticky-nav-btn--ghost:hover {
+  border-color: var(--clr-accent-blue);
+  color: var(--clr-accent-blue);
+  background: rgba(59,130,246,.07);
+}
+
+.sticky-nav-hinweis {
+  font-size: .78rem;
+  color: var(--clr-text-muted);
+  margin-left: auto;
+}
+
+/* ============================================================
+   ERGEBNIS-NAV (Werte-anpassen Button über den Result-Cards)
+   ============================================================ */
+.ergebnis-nav {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .55rem 1.1rem;
+  font-size: .92rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--clr-border);
+  background: transparent;
+  color: var(--clr-text);
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition),
+              background var(--transition);
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  border-color: var(--clr-accent-blue);
+  color: var(--clr-accent-blue);
+  background: rgba(59,130,246,.06);
+}
+
+.ergebnis-nav-sub {
+  font-size: .8rem;
+  color: var(--clr-text-muted);
+}
+
+@media (max-width: 600px) {
+  .sticky-nav-hinweis { display: none; }
+  .sticky-nav-inner   { gap: .5rem; }
+  .ergebnis-nav       { flex-direction: column; align-items: flex-start; }
+}
