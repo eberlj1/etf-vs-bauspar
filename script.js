@@ -849,8 +849,11 @@ function zeigeErgebnisse(etf, bauspar, girokonto, sparBetrag, jahre, risikoKey, 
     }
   }
 
-  // Ergebnisbereich einblenden
+ // Ergebnisbereich einblenden + sticky Nav zeigen
   const results = document.getElementById('results');
+  const formSec = document.querySelector('.form-section');
+  if (formSec) formSec.classList.add('hidden');
+  document.getElementById('sticky-nav')?.classList.remove('hidden');
   results.classList.remove('hidden');
   setTimeout(() => results.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
 }
@@ -1994,11 +1997,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ── AB HIER: BESTEHENDER CODE ────────────────────────────────
+// ── AB HIER: BESTEHENDER CODE ────────────────────────────────
 
   // Dark Mode zuerst initialisieren (verhindert Flackern beim Laden)
   initDarkMode();
 
+  // NAVIGATION: ZURÜCK ZUM FORMULAR OHNE NEU-LADEN
+  const stickyNav = document.getElementById('sticky-nav');
+  const resultsEl = document.getElementById('results');
+
+  document.getElementById('nav-zum-formular')?.addEventListener('click', function() {
+    resultsEl.classList.add('hidden');
+    stickyNav.classList.add('hidden');
+    formSection.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('nav-zum-quiz')?.addEventListener('click', function() {
+    document.getElementById('reset-btn')?.click();
+    stickyNav.classList.add('hidden');
+  });
+
+  document.getElementById('btn-werte-anpassen')?.addEventListener('click', function() {
+    resultsEl.classList.add('hidden');
+    stickyNav.classList.add('hidden');
+    formSection.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'e' || e.key === 'E') {
+      if (!resultsEl.classList.contains('hidden')) {
+        resultsEl.classList.add('hidden');
+        stickyNav.classList.add('hidden');
+        formSection.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  });
   // initQuiz() entfernt – durch neuen Quiz-Code oben ersetzt
 
   // +/− Buttons für alle Slider
