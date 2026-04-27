@@ -81,6 +81,18 @@
 
   <!-- ===== HAUPTINHALT ===== -->
   <main class="container">
+<!-- ===== STICKY NAVIGATIONSLEISTE (erscheint wenn Ergebnisse sichtbar) ===== -->
+<nav class="sticky-nav hidden" id="sticky-nav">
+  <div class="sticky-nav-inner">
+    <button type="button" class="sticky-nav-btn" id="nav-zum-formular">
+      ✏️ Werte anpassen
+    </button>
+    <button type="button" class="sticky-nav-btn sticky-nav-btn--ghost" id="nav-zum-quiz">
+      ↩ Neu starten
+    </button>
+    <span class="sticky-nav-hinweis">Tipp: Passe Werte an ohne neu zu laden</span>
+  </div>
+</nav>
 
     <!-- ===== EINSTEIGER-QUIZ (Onboarding) ===== -->
     <section class="card quiz-card" id="quiz-card">
@@ -641,6 +653,13 @@
       </div>
 
       <!-- Endwert-Karten -->
+       <!-- Werte anpassen Button über den Ergebnissen -->
+<div class="ergebnis-nav">
+  <button type="button" class="btn-secondary" id="btn-werte-anpassen">
+    ✏️ Werte anpassen
+  </button>
+  <span class="ergebnis-nav-sub">Deine Eingaben bleiben erhalten</span>
+</div>
       <div class="result-cards">
         <div class="result-card etf-card">
           <div class="result-card-label">ETF-Sparplan (MSCI World)</div>
